@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    New Count
+{% endblock %}
+
+{% block main %}
+    <form action="/count" method="post">
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" min="1" name="cantidad" placeholder="Number of users..." type="number">
+        </div>
+
+        <button class="btn btn-primary" type="submit">Next</button>
+    </form>
+{% endblock %}

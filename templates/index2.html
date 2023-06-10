@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Bills</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in cuentas %}
+            <tr>
+                <td>{{ i.cuenta }}</td></td>
+                <td>{{ i.saldo }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

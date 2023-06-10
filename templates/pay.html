@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    New Pay
+{% endblock %}
+
+{% block main %}
+
+<form action="/pay" method="post">
+    <div class="form-group">
+    Title: <input autocomplete="off" class="form-control" name="motivo" placeholder="" type="text">
+    </div>
+    Select which Bill: <select id="system" name="bill" class="form-control">
+        <option></option>
+    </select>
+    <br></br>
+    <div class="form-group">
+    Amount of money: <input autocomplete="off" class="form-control" min="0" name="money" placeholder="" type="number">
+    </div>
+    Select who Paid: <select id="game" name="who_paid" class="form-control">
+    </select>
+    <br></br>
+    Applies to:
+    <br></br>
+    <select id="usuarios" name="applies_to" class="form-control" multiple></select>
+    <br></br>
+   <p3>* Hold down the Ctrl (windows), Command (Mac) button or use your mouse to select multiple users.</p3>
+    <br></br>
+    <button class="btn btn-primary" type="submit">Upload</button>
+
+</form>
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+<script>
+    "use strict";
+
+
+    var systems = {{ systems|tojson }};
+
+    var form = $('form');
+    var system = $('select#system');
+    var game = $('select#game');
+    var usuarios = $('select#usuarios')
+
+    for (var key in systems) {
+        system.append($('<option/>', {'value': key, 'text': key}));
+    }
+
+    system.change(function(ev) {
+        game.empty();
+        usuarios.empty();
+     ///   game.append($('<option/>'));
+
+        var games = systems[system.val()];
+
+        for (var i in games) {
+            game.append($('<option/>', {'value': games[i], 'text': games[i]}));
+            usuarios.append($('<option/>', {'value': games[i], 'text': games[i]}));
+        }
+    });
+
+///    form.submit(function(ev) {
+      ///  ev.preventDefault();
+   ///     alert("playing " + game.val() + " on " + system.val());
+
+</script>
+
+{% endblock %}

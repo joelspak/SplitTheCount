@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Counts
+{% endblock %}
+
+{% block main %}
+ <form action="/history" method="post">
+        <div class="form-group">
+            <select class="form-control" name="cuenta">
+                <option disabled selected value="">Select a Bill...</option>
+
+                    {% for row in b %}
+                        <option value="{{ row.cuenta }}">{{ row.cuenta }}</option>
+
+                    {% endfor %}
+
+            </select>
+        </div>
+
+        <button class="btn btn-primary" type="submit">See history</button>
+    </form>
+
+{% endblock %}

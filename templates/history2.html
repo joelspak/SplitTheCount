@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    My Counts
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in a %}
+            <tr>
+                <td>{{ i.usuario }}</td>
+                <td>{{ i.saldo }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br></br>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Money paid</th>
+                <th>Money owed</th>
+                <th>Date</th>
+                <th>Title</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in b %}
+            <tr>
+                <td>{{ i.usuario }}</td>
+                {% if i.signo_plata == 1 %}
+                <td>{{ i.plata }}</td>
+                {% endif %}
+                <td></td>
+                {% if i.signo_plata == -1 %}
+                <td>{{ i.plata }}</td>
+                {% endif %}
+                <td>{{ i.fecha }}</td>
+                <td>{{ i.motivo }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
